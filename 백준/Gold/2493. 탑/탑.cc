@@ -1,38 +1,35 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-#include <vector>
 #include <algorithm>
+#include <utility>
 #include <stack>
-#include <queue>
-#include <cstring>
-#include <string>
-#include <cmath>
-#include <cstdlib>
-
 using namespace std;
-int N;
-stack<pair<int,int>> st;
 
 int main() {
     ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    cin.tie(NULL);
 
-    cin>>N;
-    for (int i = 0; i < N; i++){
-        int height;
-        cin>>height;
-        while(!st.empty()){
-            if(height<st.top().first){
+    int N;
+    stack<pair<int,int>> st;
+    cin >> N;
+    for (int i = 0; i < N; i++)
+    {
+        int val;
+        cin>>val;
+        while(!st.empty()) {
+            if(val<st.top().first){
                 cout<<st.top().second<<" ";
                 break;
             }
             st.pop();
         }
         if(st.empty()){
-            cout<<0<<" ";
+            cout<<"0 ";
         }
-        st.push(make_pair(height,i+1));
+        st.push({val,i+1});
     }
+    cout<<"\n";
+    
+
 
     return 0;
 }
